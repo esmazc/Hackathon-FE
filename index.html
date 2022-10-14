@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--links-->
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="https://kit.fontawesome.com/680ff5430a.js" crossorigin="anonymous"></script>
+    
+
+    <title>Website</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            KONTEJNER ZA LOGO
+        </div>
+        <nav class="navbar">
+            <div class="navbar_bars">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <nav class="navbar-menu">
+                <a  class="active" href="#section1">Section1</a>
+                <a  href="#section2">Section2</a>
+                <a  href="#section3">Section3</a>
+                <a  href="#section4">Section4</a>
+                <a  href="#section5">Section5</a>
+            </nav>
+            
+        </nav>
+    </header>
+    <section class="section"  id="section1">Page1</section>
+    <section class="section"  id="section2">Page2</section>
+    <section class="section"  id="section3">Page3</section>
+    <section class="section"  id="section4">Page4</section>
+    <section class="section"  id="section5">Page5</section>
+    <section class="footer">Footer</div>
+
+    <!--JS--------------------------------------------------------------------------------------->
+
+    <!--STICKY NAVBAR-->
+    <script type="text/javascript">
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY>0);
+        })
+    </script>
+    <!--SCROLLSPY-->
+    <script>
+        let section = document.querySelectorAll("section");
+        let navLinks = document.querySelectorAll("header nav nav a");
+
+        window.onscroll = () =>{
+            section.forEach(sec =>{
+                let top=window.scrollY;
+                let offset =sec.offsetTop-150;
+                let height = sec.offsetHeight;
+                let id = sec.getAttribute('id');
+
+                if(top >= offset && top <offset+height){
+                    navLinks.forEach(links =>{
+                        links.classList.remove('active');
+                        document.querySelector('header nav nav a[href*=' + id  + ']').classList.add('active');
+                    })
+                }
+            })
+        }
+    </script>
+</body>
+</html>
