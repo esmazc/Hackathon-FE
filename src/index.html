@@ -4,10 +4,42 @@
   <meta charset="utf-8">
   <title>MyApp</title>
   <base href="/">
+  <!--links-->
+  <!--IKONE-->
+  <script src="https://kit.fontawesome.com/680ff5430a.js" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="app/app.component.css">
 </head>
 <body>
   <app-root></app-root>
+  <!--STICKY NAVBAR-->
+  <script type="text/javascript">
+    window.addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY>0);
+    })
+</script>
+<!--SCROLLSPY-->
+<script>
+    let section = document.querySelectorAll("section");
+    let navLinks = document.querySelectorAll("header nav nav a");
+
+    window.onscroll = () =>{
+        section.forEach(sec =>{
+            let top=window.scrollY;
+            let offset =sec.offsetTop-150;
+            let height = sec.offsetHeight;
+            let id = sec.getAttribute('id');
+
+            if(top >= offset && top <offset+height){
+                navLinks.forEach(links =>{
+                    links.classList.remove('active');
+                    document.querySelector('header nav nav a[href*=' + id  + ']').classList.add('active');
+                })
+            }
+        })
+    }
+</script>
 </body>
 </html>

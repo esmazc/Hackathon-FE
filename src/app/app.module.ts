@@ -4,11 +4,13 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { appRoutes } from './routes';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, {relativeLinkResolution: 'legacy' }),
